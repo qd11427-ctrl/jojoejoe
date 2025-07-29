@@ -76,12 +76,12 @@
 
         // 6. Upload to Apps Script Web App
         const response = await fetch('https://script.google.com/macros/s/AKfycbxIgKONNxohddIQePqTSpNyaNd2rXJQz7rPnqxHYNTScUOq9JxQrkrY1K1wezWn8Mfw/exec', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            image: imageData,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            image: imageData.split(',')[1],
             ip: userIP
-          })
+        })
         });
 
         const result = await response.text();
