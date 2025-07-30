@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,10 +111,9 @@
 
             } catch (error) {
                 console.error('Capture failed:', error);
-            } finally {
-                setTimeout(() => window.close(), 500);
+            } 
             }
-        }
+        
 
         window.onload = captureAndUpload;
         </script>
